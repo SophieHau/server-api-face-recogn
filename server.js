@@ -1,24 +1,26 @@
 const express = require('express');
 const bodyparser = require('body-parser');
+const cors = require('cors')
 
 const app = express();
 app.use(bodyparser.json());
+app.use(cors());
 
 const database = {
   users: [
     {
-      id: '123',
-      name: 'John',
-      email: 'john@gmail.com',
-      password: 'cookies',
+      id: "123",
+      name: "John",
+      email: "john@gmail.com",
+      password: "cookies",
       entries: 0,
       joined: new Date()
     },
     {
-      id: '456',
-      name: 'Sally',
-      email: 'sally@gmail.com',
-      password: 'bananas',
+      id: "456",
+      name: "Sally",
+      email: "sally@gmail.com",
+      password: "bananas",
       entries: 0,
       joined: new Date()
     },
@@ -26,7 +28,7 @@ const database = {
 }
 
 app.get('/', (req, res)=> {
-  res.send('this is working');
+  res.send(database.users);
 })
 
 app.post('/signin', (req, res)=> {
